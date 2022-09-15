@@ -35,9 +35,13 @@ a:link,a:visited {
 a:hover {
     color: #208799;
 }
-h1, h2, h3 {
+h1 {
     text-align: center;
 }
+h2,h3 {
+    text-align: left;
+}
+
 h1 {
     font-size: 40px;
     font-weight: 500;
@@ -46,8 +50,13 @@ h2 {
     font-weight: 400;
     margin: 16px 0px 4px 0px;
 }
+h3 {
+    font-weight: 600;
+    margin: 16px 0px 4px 0px;
+}
+
 .paper-title {
-    padding: 16px 0px 16px 0px;
+    padding: 1px 0px 1px 0px;
 }
 section {
     margin: 32px 0px 32px 0px;
@@ -85,13 +94,13 @@ section {
 
 .author-row-new a {
     display: inline-block;
-    font-size: 26px;
-    padding: 15px;
+    font-size: 20px;
+    padding: 4px;
 }
 
 .author-row-new sup {
     color: #313436;
-    font-size: 60%;
+    font-size: 12px;
 }
 
 .affiliations-new {
@@ -224,7 +233,7 @@ figure {
 }
 
 .venue {
-    font-size: 30px;
+    font-size: 23px;
 }
 
 .topnav {
@@ -291,15 +300,15 @@ pre {
 <script type="text/javascript" src="../js/hidebib.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
     <head>
-        <title>Score-Based Generative Modeling with Critically-Damped Langevin Diffusion</title>
+        <title> LION: Latent Point Diffusion Models for 3D Shape Generation </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta property="og:description" content="Score-Based Generative Modeling with Critically-Damped Langevin Diffusion"/>
+        <!-- meta property="og:description" content="Score-Based Generative Modeling with Critically-Damped Langevin Diffusion"/ -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:creator" content="@timudk">
-        <meta name="twitter:title" content="Score-Based Generative Modeling with Critically-Damped Langevin Diffusion">
-        <meta name="twitter:description" content="Inspired by connections to statistical mechanics, we propose a novel diffusion process, critically-damped Langevin diffusion, that perturbs the data in a smoother manner by leveraging auxiliary velocity variables. This allows us to denoise more efficiently and learn higher quality generative models.">
-        <meta name="twitter:image" content="https://nv-tlabs.github.io/CLD-SGM/assets/cld_teaser_resized.png">
+        <!-- meta name="twitter:card" content="summary_large_image" -->
+        <!-- meta name="twitter:creator" content="@timudk" -->
+        <!-- meta name="twitter:title" content="Score-Based Generative Modeling with Critically-Damped Langevin Diffusion" -->
+        <!-- meta name="twitter:description" content="Inspired by connections to statistical mechanics, we propose a novel diffusion process, critically-damped Langevin diffusion, that perturbs the data in a smoother manner by leveraging auxiliary velocity variables. This allows us to denoise more efficiently and learn higher quality generative models." -->
+        <!-- meta name="twitter:image" content="https://nv-tlabs.github.io/CLD-SGM/assets/cld_teaser_resized.png" -->
     </head>
 
  <body>
@@ -311,26 +320,30 @@ pre {
 </div>
 <div class="container">
     <div class="paper-title">
-      <h1>Score-Based Generative Modeling <br> with Critically-Damped Langevin Diffusion</h1>
+      <h1> LION: Latent Point Diffusion Models <br> for 3D Shape Generation</h1>
     </div>
 
     <div id="authors">
     	<center>
             <div class="author-row-new">
-                <a href="https://timudk.github.io/">Tim Dockhorn<sup>1,2,3</sup></a>
-                <a href="http://latentspace.cc/">Arash Vahdat<sup>1</sup></a>
+                <a href="https://www.cs.utoronto.ca/~xiaohui/">Xiaohui Zeng<sup>1,2,3</sup></a>,
+                <a href="https://www.fwilliams.info/">Francis Williams<sup>1</sup></a>,
+                <a href="https://zgojcic.github.io/">Zan Gojcic<sup>1</sup></a>,
+                <a href="https://orlitany.github.io/">Or Litany<sup>1</sup></a>,
+                <a href="https://www.cs.utoronto.ca/~fidler/">Sanja Fidler<sup>1,2,3</sup></a>,
+                <a href="http://latentspace.cc/">Arash Vahdat<sup>1</sup></a>,
                 <a href="https://karstenkreis.github.io/">Karsten Kreis<sup>1</sup></a>
             </div>
         </center>
         <center>
         <div class="affiliations">
             <span><sup>1</sup> NVIDIA</span>
-            <span><sup>2</sup> University of Waterloo</span>
+            <span><sup>2</sup> University of Toronto</span>
             <span><sup>3</sup> Vector Institute</span> <br/>
         </div>
 
         <div class="affil-row">
-            <div class="venue text-center"><b>ICLR 2022 (spotlight)</b></div>
+            <div class="venue text-center"><b>NeurIPS 2022 </b></div>
         </div>
 
         </center>
@@ -342,7 +355,7 @@ pre {
                  Paper
             </a>
             <div class="paper-btn-coming-soon">
-                <a class="paper-btn" href="https://github.com/nv-tlabs/CLD-SGM">
+                <a class="paper-btn" href="https://github.com/nv-tlabs/LION">
                     <span class="material-icons"> code </span>
                     Code
                 </a>
@@ -352,108 +365,71 @@ pre {
     <br>
 
     <section id="teaser-image">
+        <center>
             </p><figure style="margin-top: 20px; margin-bottom: 20px;">
-                <img width="100%" src="./assets/cld_teaser.png" style="margin-bottom: 20px;">
+                <img width="50%" src="./assets/lion_teaser.png" style="margin-bottom: 20px;">
                 <p class="caption">
-                    In critically-damped Langevin diffusion, the data \(\bf{x}_t\) is augmented with a velocity \(\bf{v}_t\). A diffusion coupling \(\bf{x}_t\) 
-                    and \(\bf{v}_t\) is run in the joint data-velocity space (probabilities in red). Noise is injected only into \(\bf{v}_t\). This leads to smooth 
-                    diffusion trajectories (green) for the data \(\bf{x}_t\). Denoising only requires \(\nabla_{\bf{v}_t} \log p_t(\bf{v}_t |\bf{x}_t )\).
+                    caption for the teaser 
                 </p><p class="caption">
             </p>
+        </center>
     </section>
 
     <section id="news">
-        <h2>News</h2>
         <hr>
+        <h2>News</h2>
         <div class="row">
-            <div><span class="material-icons"> event </span> [Mar 2022] Our <a href=https://github.com/nv-tlabs/CLD-SGM/>code</a> has been released.</div>
-            <div><span class="material-icons"> event </span> [Feb 2022] Karsten presented our work at <a href=https://mlcollective.org/dlct/>Deep Learning: Classics and Trends</a> by ML Collective (<a href=https://drive.google.com/file/d/1USVGp5FwtJw6WD9-m5GCqcTkgRwWKy6A/view?usp=sharing>slides</a>).</div>
-            <div><span class="material-icons"> event </span> [Jan 2022] Our paper got accepted at the <b>International Conference on Learning Representations (ICLR)</b> as a <b>spotlight</b> presentation! It received average <a href=https://openreview.net/forum?id=CzceR82CYc>reviewer ratings</a> of 8.5, which makes it a <b>top 0.4%</b> submission!</div>
-            <div><span class="material-icons"> event </span> [Jan 2022] Tim presented our work at the Vector Institute.</div>
-            <div><span class="material-icons"> event </span> [Dec 2021] <a href=https://twitter.com/karsten_kreis/status/1471160404747251720>Twitter thread</a> explaining the work in detail.</div> 
-            <div><span class="material-icons"> event </span> [Dec 2021] <a href="https://nv-tlabs.github.io/CLD-SGM">Project page</a> released!</div>
-            <div><span class="material-icons"> event </span> [Dec 2021] Draft released on <a href="https://arxiv.org/abs/2112.07068">arXiv</a>!</div>
+            <div><span class="material-icons"> event </span> [Sept 2022] Build the project page <a href="https://github.com/nv-tlabs/LION">Page</a>!</div>
         </div>
     </section>
 
     <section id="abstract"/>
-        <h2>Abstract</h2>
         <hr>
+        <h2>Abstract</h2>
         <div class="flex-row">
             <p>
-                Score-based generative models (SGMs) have demonstrated remarkable synthesis quality. SGMs rely on a diffusion process that gradually 
-                perturbs the data towards a tractable distribution, while the generative model learns to denoise. The complexity of this denoising task 
-                is, apart from the data distribution itself, uniquely determined by the diffusion process. We argue that current SGMs employ overly simplistic 
-                diffusions, leading to unnecessarily complex denoising processes, which limit generative modeling performance. Based on connections to statistical 
-                mechanics, we propose a novel critically-damped Langevin diffusion (CLD) and show that CLD-based SGMs achieve superior performance. CLD can be 
-                interpreted as running a joint diffusion in an extended space, where the auxiliary variables can be considered "velocities" that are coupled to 
-                the data variables as in Hamiltonian dynamics. We derive a novel score matching objective for CLD and show that the model only needs to learn the 
-                score function of the conditional distribution of the velocity given data, an easier task than learning scores of the data directly. We also 
-                derive a new sampling scheme for efficient synthesis from CLD-based diffusion models. We find that CLD outperforms previous SGMs in synthesis 
-                quality for similar network architectures and sampling compute budgets. We show that our novel sampler for CLD significantly outperforms 
-                solvers such as Euler—Maruyama. Our framework provides new insights into score-based denoising diffusion models and can be readily used for 
-                high-resolution image synthesis.
+                Denoising diffusion models (DDMs) have shown promising results in 3D point cloud synthesis. To advance 3D DDMs and make them useful 
+                for digital artists, we require (i) high generation quality, (ii) flexibility for manipulation and applications such as conditional 
+                synthesis and shape interpolation, and (iii) the ability to output smooth surfaces or meshes. To this end, we introduce the 
+                hierarchical Latent Point Diffusion Model (LION) for 3D shape generation. LION is set up as a variational autoencoder (VAE) with 
+                a hierarchical latent space that combines a global shape latent representation with a point-structured latent space. For generation, 
+                we train two hierarchical DDMs in these latent spaces. The hierarchical VAE approach boosts performance compared to DDMs that operate 
+                on point clouds directly, while the point-structured latents are still ideally suited for DDM-based modeling. Experimentally, LION 
+                achieves state-of-the-art generation performance on multiple ShapeNet benchmarks. Furthermore, our VAE framework allows us to easily 
+                use LION for different relevant tasks without re-training the latent DDMs: We show that LION excels at multimodal shape denoising and 
+                voxel-conditioned synthesis. We also demonstrate shape autoencoding and latent shape interpolation, and we augment LION with modern 
+                surface reconstruction techniques to generate smooth 3D meshes. We hope that LION provides a powerful tool for artists working with 
+                3D shapes due to its high-quality generation, flexibility, and surface reconstruction. 
             </p>
         </div>
     </section>
 
-
-    <section id="intro"/>
-        <h2>Score-Based Generative Modeling <br> with Critically-Damped Langevin Diffusion</h2>
-        <hr>
-        <div class="flex-row">
-            <p> Score-based generative models (SGMs) and denoising diffusion probabilistic models have emerged as a promising class of generative models. 
-                SGMs offer high quality synthesis and sample diversity, do not require adversarial objectives, and have found applications in image, speech, 
-                and music synthesis, image editing, super-resolution, image-to-image translation, and 3D shape generation. SGMs use a diffusion process to gradually 
-                add noise to the data, transforming a complex data distribution to an analytically tractable prior distribution. A neural network is then utilized to 
-                learn the score function—the gradient of the log probability density—of the perturbed data. The learnt scores can be used to solve a stochastic 
-                differential equation (SDE) to synthesize new samples. This corresponds to an iterative denoising process, inverting the forward diffusion.
-            </p>
-            <p> It has been shown that the score function that needs to be learnt by the neural network is uniquely determined by the forward diffusion process. 
-                Consequently, the complexity of the learning problem depends, other than on the data itself, only on the diffusion. Hence, the diffusion process 
-                is the key component of SGMs that needs to be revisited to further improve SGMs, for example, in terms of synthesis quality or sampling speed.
-            </p>
-            <p> Inspired by statistical mechanics, we propose a novel forward diffusion process, the critically-damped Langevin diffusion (CLD). In CLD, the data 
-                variable, \(\bf{x}_t\) (time \(t\) along the diffusion), is augmented with an additional "velocity" variable \(\bf{v}_t\) and a diffusion process is run in 
-                the joint data-velocity space. Data and velocity are coupled to each other as in Hamiltonian dynamics, and noise is injected only into the velocity 
-                variable. Similarly as in Hamiltonian Monte Carlo, the Hamiltonian component helps to efficiently traverse the joint data-velocity space 
-                and to transform the data distribution into the prior distribution more smoothly. We derive the corresponding score matching objective and show that 
-                for CLD the neural network is tasked with learning only the score of the conditional distribution of velocity given data 
-                \(\nabla_{\bf{v}_t} \log p_t(\bf{v}_t |\bf{x}_t )\), which is arguably easier than learning the score of the diffused data distribution directly. Using 
-                techniques from molecular dynamics, we also derive a novel SDE integrator tailored to CLD's reverse-time synthesis SDE.
-            </p>
-        </div>
-    </section>
 
     <section id="teaser-video">
     </p>
+    <center>
     <figure>
-        <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-            <source src="assets/animation.mp4#t=0.001" type="video/mp4">
+        <video class="centered" width="50%" controls muted autoplay>
+            <source src="assets/LION_demo.mp4#t=0.001" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <p class="caption">
-            Schematic visualization of CLD's forward diffusion as well as reverse-time synthesis process: At the top, we visualize how a one-dimensional data 
-            distribution (mixture of three Normals) together with the velocity diffuses towards the prior in the joint data-velocity space and how generation proceeds
-            in the reverse direction. We sample three different diffusion trajectories (in green) and also show the projections into data and velocity space on the 
-            right. We can see smooth diffusion trajectories for the data variables. At the bottom, we visualize a similar diffusion and synthesis process for
-            (high-dimensional) image generation. We see that the velocities "encode" the data at intermediate times \(t\).
+            Generated output from LION.
         </p>
     </figure>
+    </center>
     </p>
     </section>
 
     <section id="novelties"/>
-        <h2>Technical Contributions</h2>
         <hr>
+        <h2>Technical Contributions</h2>
         <div class="flex-row">
             <p>We make the following technical contributions:
                 <ul style="list-style-type:disc;">
-                    <li>We propose CLD, a novel diffusion process for SGMs.</li>
-                    <li>We derive a score matching objective for CLD which requires only the score of the conditional distribution of velocity given data.</li>
-                    <li>We propose hybrid denoising score matching, a new type of denoising score matching ideally suited for scalable training of CLD-based SGMs.</li> 
-                    <li>We derive a tailored SDE integrator that enables efficient sampling from CLD-based models.</li> 
-                    <li>Overall, we provide novel insights into SGMs and point out important new connections to statistical mechanics.</li>
+                    <li>We explore the training of multiple denoising diffusion models (DDMs) in a latent space..</li>
+                    <li>We train latent DDMs in 3D generation.</li>
+                    <li>We outperform all baselines and demonstrate that LION scale to extremely diverse shape datasets, like modeling 13 or even 55 ShapeNet categories jointly without conditioning. </li> 
                 </ul>
             </p>
         </div>
@@ -461,55 +437,201 @@ pre {
 
 
     <section id="results">
-        <h2>Experimental Results</h2>
         <hr>
-        <div class="flex-row">
-            <p>We extensively validate CLD and the new SDE solver:
-                <ul style="list-style-type:disc;">
-                    <li>We show that the neural networks learnt in CLD-based SGMs are smoother than those of previous SGMs. We attribute this to the Hamiltonian component in the diffusion and to CLD’s easier score function target, the score of the velocity-data conditional distribution \(\nabla_{\bf{v}_t} \log p_t(\bf{v}_t |\bf{x}_t )\).</li>
-                    <li>On the CIFAR-10 image modeling benchmark, we demonstrate that CLD-based models outperform previous diffusion models in synthesis quality for 
-                    similar network architectures and sampling compute budgets. Our CLD-based SGMs achieve FID scores of 2.25 and 2.23 using probability flow ODE sampling and generative SDE sampling, respectively.</li>
-                    <li>We show that our novel SDE integrator for CLD is well suited for synthesis with limited neural network calls and significantly outperforms the popular Euler–Maruyama method.</li>
-                    <li>We perform ablations on various aspects of CLD and find that CLD does not have difficult-to-tune hyperparameters.</li>
-                </ul>
-            Samples from our CLD-based SGMs as well as latent space traversals and sample generation paths are visualized below.
-            </p>
-        </div>
-        <center>
-        <figure style="width: 100%;">
-            <a>
-                <img width="40%" src="assets/cifar10_main.png">
-                <img width="40%" src="assets/celeba_main.png">
-            </a>
-            <p class="caption" style="margin-bottom: 24px;">
-                 Generated samples for CIFAR-10 (left) and CelebA-HQ-256 (right). CLD-based SGMs generate sharp, high-quality, and diverse samples.
-            </p>
-        </figure>
-        </center>
-        <br> 
-        <figure>
-            <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                <source src="assets/latent_interpolation.mp4#t=0.001" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="caption">
-                The sequence above is generated by randomly traversing the latent space of our CLD-SGM model (using the probability flow ODE formulation).
-            </p>
-        </figure>
-        <br> <br>
-        <figure style="width: 100%;">
-            <a href="assets/celeba_gen.png">
-                <img width="100%" src="assets/celeba_gen.png">
-            </a>
-            <p class="caption" style="margin-bottom: 24px;">
-                 Visualization of the generation paths of samples from our CelebA-HQ-256 model (synthesis uses only 150 steps). Odd and even rows visualize data and velocity variables, respectively.
-                 The eight columns correspond to times \(t \in \{1.0, 0.5, 0.3, 0.2, 0.1, 10^{-2}, 10^{-3}, 10^{-5}\}\) (from left to right). The velocity distribution
-                 converges to a Normal (different variances) for both \(t \to 0\) and \(t \to 1\). See Appendix F.3 in our paper for visualization details and discussion.
-            </p>
-        </figure>
+        <h2>Generation (Single Category)</h2>  
+            <div class="flex-row">
+                <p>Samples from LION trained on single catgory.  </p>
+            </div>
+
+            <center>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_airplane.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh of airplanes.             
+                </p> <br>
+            </figure>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_chair.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh of chair.             
+                </p> <br>
+            </figure>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_car.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh of car.             
+                </p> <br>
+            </figure>
+
+            <figure style="width: 100%;">
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_animal.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption" style="margin-bottom: 24px;">
+                    Generated point clouds and reconstructed mesh of Animal.             
+                </p> <br>
+            </figure>
+            </center>
+
+        <hr>
+        <h2>Generation (Multi-Classes)</h2>  
+            <!-- <div class="flex-row">
+                <p>samples from LION trained on multiple ShapeNet catgories, without conditioning.  </p>
+            </div> --> 
+            <center>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_all_v13.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh. LION model trained on 13 ShapeNet categories jointly without conditioning.              
+                </p>
+                <br>
+            </figure>
+            </center>
+    </section> 
+
+    <section id="more_results">
+        <hr> 
+        <h2>Applications</h2>  
+        
+        <h3>Voxel-Conditioned Synthesis </h3>  
+            <div class="flex-row">
+                <p>Given a coarse voxel grid, LION can generate different plausible detailed shapes. </p>
+                <p>In practice, an artist using a 3D generative model may have a rough idea of the desired shape. For instance, they may be able to quickly construct a coarse voxelized shape, to which the generative model then adds realistic details. </p>
+            </div>
+
+            <center>
+                <figure style="width: 40%;">
+
+                    <video class="centered" width="30%" controls autoplay muted playsinline class="video-background " >
+                        <source src="assets/airplane_voxel_input_165.mp4#t=0.01" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="caption" style="margin-bottom: 24px;" width="30%">
+                        Input voxel grid 
+                        <!-- Voxel-guided synthesis experiments, on different categories. We run diffuse-denoise in latent space to generate diverse plausible clean shapes (first row, left plane: 250 diffuse-denoise steps; first row, right plane: 200 steps;) -->
+                    </p>
+
+                </figure>
+                <figure style="width: 40%;">
+
+                    <video class="centered" width="30%" controls autoplay muted playsinline class="video-background " >
+                        <source src="assets/airplane_voxel_output_165_D200_1.mp4#t=0.001" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="caption" style="margin-bottom: 24px;" width="30%">
+                        Output point clouds and mesh.
+                    </p>
+
+                </figure>
+
+            </center>
+        <br>
+
+        <h3>Interpolation </h3> 
+            <div class="flex-row">
+                <p>LION can interpolate two shapes by traversing the latent space. The generated shapes are clean and semantically plausible along the entire interpolation path.  </p>
+            </div>
+            <figure>
+                <video class="centered" width="40%" autoplay loop muted playsinline class="video-background " >
+                    <source src="assets/LION_latent_interp.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- <p class="caption">
+                    The sequence above is generated by interpolating the latent variable of the source and target shapes (using the probability flow ODE formulation).
+                </p> -->
+            </figure>
+        <br>
+
+        <h3> Per-sample Text-driven Texture Synthesis </h3> 
+            <div class="flex-row">
+                <p> 
+                    We apply Text2mesh on some generated meshes from LION to additionally synthesize textures in a text-driven manner, leveraging CLIP.
+                </p>
+            </div>
+            <figure style="width: 100%;">
+                    <a>
+                        <img width="100%" src="assets/text2mesh_airplane.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         Text2mesh results with text prompt "a airplane made of __". All prompts are applied on the same generated shapes. The original mesh is generated by LION. 
+                    </p>
+            </figure>
+        <br>
+
+        <h3> Single View Reconstruction </h3> 
+            <div class="flex-row">
+                <p> 
+                    We extend LION to also allow for single view reconstruction (SVR) from RGB data. We render 2D
+                    images from the 3D ShapeNet shapes, extracted the images’ CLIP image embeddings, and
+                    trained LION’s latent diffusion models while conditioning on the shapes’ CLIP image embeddings.
+                    At test time, we then take a single view 2D image, extract the CLIP image embedding, and generate
+                    corresponding 3D shapes, thereby effectively performing SVR. We show SVR results from real
+                    RGB data 
+                </p>
+            </div>
+            <figure style="width: 50%;">
+                    <a>
+                        <img width="100%" src="assets/svr_chair.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         Single view reconstruction from RGB images of chair. For each input image, LION can generate multi-modal outputs.
+                    </p>
+            </figure>
+            <figure style="width: 50%;">
+                    <a>
+                        <img width="100%" src="assets/svr_car.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         Single view reconstruction from RGB images of car. For each input image, LION can generate multi-modal outputs.
+                    </p>
+            </figure>
+            <figure style="width: 100%;">
+                    <a>
+                        <img width="100%" src="assets/svr_car_more.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         More single view reconstruction from RGB images of car. 
+                    </p>
+            </figure>
+        <br>
+        <h3> Text-Guided Generation </h3>
+            <div class="flex-row">
+                <p> 
+                     Using CLIP’s text encoder, our method additionally allows for text-guided generation.  
+                </p>
+            </div>
+            <figure style="width: 50%;">
+                    <a>
+                        <img width="100%" src="assets/clipforge_chair.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         Text-driven shape generation of chairs with LION. Bottom row is the text input
+                    </p>
+            </figure>
+            <figure style="width: 50%;">
+                    <a>
+                        <img width="100%" src="assets/clipforge_car.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                         Text-driven shape generation of cars with LION. Bottom row is the text input
+                    </p>
+            </figure>
+
 
     </section>
-    
     <section id="paper">
         <h2>Paper</h2>
         <hr>
@@ -520,12 +642,14 @@ pre {
             </div>
         </div>
             <div class="paper-stuff">
-                <p><b>Score-Based Generative Modeling with Critically-Damped Langevin Diffusion</b></p>
-                <p>Tim Dockhorn, Arash Vahdat, Karsten Kreis</p>
-                <p><i>International Conference on Learning Representations (ICLR), 2022 <b>(spotlight)</b></i></p>
+                <p><b>LION: Latent Point Diffusion Models for 3D Shape Generation</b></p>
+                <p>Xiaohui Zeng, Arash Vahdat, Francis Williams, Zan Gojcic, Or Litany, Sanja Fidler, Karsten Kreis</p>
+                <p><i>Advances in Neural Information Processing Systems (NeurIPS), 2022 <b></b></i></p>
+                <!-- 
                 <div><span class="material-icons"> description </span><a href="https://arxiv.org/abs/2112.07068"> arXiv version</a></div>
                 <div><span class="material-icons"> insert_comment </span><a href="assets/dockhorn2021score.bib"> BibTeX</a></div>
                 <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/nv-tlabs/CLD-SGM"> Code</a></div>
+                -->
             </div>
             </div>
         </div>
@@ -534,10 +658,11 @@ pre {
     <section id="bibtex">
         <h2>Citation</h2>
         <hr>
-        <pre><code>@inproceedings{dockhorn2022score,
-    title={Score-Based Generative Modeling with Critically-Damped Langevin Diffusion},
-    author={Tim Dockhorn and Arash Vahdat and Karsten Kreis},
-    booktitle={International Conference on Learning Representations (ICLR)},
+        <pre><code>@inproceedings{ 
+    zeng2022lion,
+    title={ LION: Latent Point Diffusion Models for 3D Shape Generation },
+    author={ Xiaohui Zeng and Arash Vahdat and Francis Williams and Zan Gojcic and Or Litany and Sanja Fidler and Karsten Kreis },
+    booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
     year={2022}
 }</code></pre>
     </section>
