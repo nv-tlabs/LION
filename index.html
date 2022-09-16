@@ -529,7 +529,31 @@ pre {
     <section id="more_results">
         <hr> 
         <h2>Applications</h2>  
-        
+        <h3>Interpolation </h3> 
+            <div class="flex-row">
+                <p>LION can interpolate two shapes by traversing the latent space. The generated shapes are clean and semantically plausible along the entire interpolation path.  </p>
+            </div>
+            <figure>
+                <video class="centered" width="100%" controls muted playsinline class="video-background " >
+                    <source src="assets/LION_interp.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Left most shape: the source shape. Right most shape: the target shape. The shapes in middle are interpolated results between source and target shape.
+                </p> 
+            </figure>
+           <figure>
+                <video class="centered" width="50%" controls loop autoplay muted playsinline class="video-background " >
+                    <source src="assets/LION_interp_seq.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    LION traverses the latent space and interpolates many different shapes. 
+                </p> 
+            </figure>
+
+        <br>
+       
         <h3>Voxel-Conditioned Synthesis </h3>  
             <div class="flex-row">
                 <p>Given a coarse voxel grid, LION can generate different plausible detailed shapes. </p>
@@ -552,20 +576,6 @@ pre {
             </center>
         <br>
 
-        <h3>Interpolation </h3> 
-            <div class="flex-row">
-                <p>LION can interpolate two shapes by traversing the latent space. The generated shapes are clean and semantically plausible along the entire interpolation path.  </p>
-            </div>
-            <figure>
-                <video class="centered" width="100%" controls loop muted playsinline class="video-background " >
-                    <source src="assets/LION_interp.mp4#t=0.001" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="caption">
-                    Left most shape: the source shape. Right most shape: the target shape. The shapes in middle are interpolated results between source and target shape.
-                </p> 
-            </figure>
-        <br>
 
         <h3> Per-sample Text-driven Texture Synthesis </h3> 
             <div class="flex-row">
