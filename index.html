@@ -29,7 +29,7 @@ h2 {
     font-size: 1.75em;
 }
 a:link,a:visited {
-    color: #B6486F;
+    color: #5364cc;
     text-decoration: none;
 }
 a:hover {
@@ -209,7 +209,7 @@ figure {
   outline: none;
   border-radius: 2px;
   
-  background-color: #B6486F;
+  background-color: #5364cc;
   color: white !important;
   font-size: 20px;
   width: 100px;
@@ -301,7 +301,7 @@ pre {
 .column {
   text-align: center;
   float: left;
-  width: 33.33%;
+  width: 16.666%;
   padding: 5px;
 }
 
@@ -343,7 +343,9 @@ pre {
 </div>
 <div class="container">
     <div class="paper-title">
-      <h1> LION: Latent Point Diffusion Models <br> for 3D Shape Generation</h1>
+    <h1> 
+        <font color="#5364cc">LION</font>: 
+        <font color="#5364cc">L</font>atent Point Diffus<font color="#5364cc">ion</font> Models <br> for 3D Shape Generation</h1>
     </div>
 
     <div id="authors">
@@ -426,6 +428,28 @@ pre {
             </p>
         </div>
     </section>
+    <section id="method"/>
+        <hr>
+        <h2>Method</h2>
+        <div class="flex-row">
+            <p> 
+            LION is set up as a hierarchical point cloud VAE with denoising diffusion models over the shape latent and latent point distributions. 
+            Point-Voxel CNNs (PVCNN) with adaptive Group Normalization (Ada. GN) are used as neural networks. 
+            The latent points can be interpreted as a smoothed version of the input point cloud. 
+            Shape As Points (SAP) is optionally used for mesh reconstruction. 
+            </p>
+        </div>
+        <center>
+            <figure style="width: 100%;">
+                    <a>
+                        <img width="50%" src="assets/pipeline.jpg"> 
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                        Architecture of LION. 
+                    </p>
+            </figure>
+        </center>
+    </section>
 
     <!--
     <section id="teaser-video">
@@ -506,6 +530,25 @@ pre {
                 </p> <br>
             </figure>
             </center>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_bottle.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh of bottle.             
+                </p> <br>
+            </figure>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_mug.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh of mug.             
+
+                </p> <br>
+            </figure>
 
         <hr>
         <h2>Generation (Multi-Classes)</h2>  
@@ -524,6 +567,20 @@ pre {
                 <br>
             </figure>
             </center>
+
+            <center>
+            <figure>
+                <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
+                    <source src="assets/gen_all_55.mp4#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="caption">
+                    Generated point clouds and reconstructed mesh. LION model trained on 55 ShapeNet categories jointly without conditioning.              
+                </p>
+                <br>
+            </figure>
+            </center>
+
     </section> 
 
     <section id="more_results">
@@ -542,6 +599,7 @@ pre {
                     Left most shape: the source shape. Right most shape: the target shape. The shapes in middle are interpolated results between source and target shape.
                 </p> 
             </figure>
+           <center>
            <figure>
                 <video class="centered" width="50%" controls loop autoplay muted playsinline class="video-background " >
                     <source src="assets/LION_interp_seq.mp4#t=0.001" type="video/mp4">
@@ -551,7 +609,7 @@ pre {
                     LION traverses the latent space and interpolates many different shapes. 
                 </p> 
             </figure>
-
+           </center>
         <br>
        
         <h3>Voxel-Conditioned Synthesis </h3>  
@@ -588,14 +646,18 @@ pre {
                     RGB data 
                 </p>
             </div>
-            <figure style="width: 50%;">
+            <center>
+            <figure style="width: 100%;">
                     <a>
-                        <img width="100%" src="assets/svr/img2shape_mitsuba_full.jpg">
+                        <img width="49%" src="assets/svr/img2shape_mitsuba_full.jpg">
+                        <img width="49%" src="assets/svr/img2shape_cari2s_mm_mitsuba_full.jpg">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
                          Single view reconstruction from RGB images of chair. For each input image, LION can generate multi-modal outputs.
                     </p>
             </figure>
+            </center>
+            <!-- 
             <figure style="width: 50%;">
                     <a>
                         <img width="100%" src="assets/svr/img2shape_cari2s_mm_mitsuba_full.jpg">
@@ -604,6 +666,8 @@ pre {
                          Single view reconstruction from RGB images of car. For each input image, LION can generate multi-modal outputs.
                     </p>
             </figure>
+            --> 
+            <center>
             <figure style="width: 100%;">
                     <a>
                         <img width="100%" src="assets/svr/img2shape_cari2s_mitsuba_full.jpg">
@@ -612,6 +676,7 @@ pre {
                          More single view reconstruction from RGB images of car. 
                     </p>
             </figure>
+            </center>
         <br>
         <h3> Text-Guided Generation </h3>
             <div class="flex-row">
@@ -619,22 +684,17 @@ pre {
                      Using CLIP’s text encoder, our method additionally allows for text-guided generation.  
                 </p>
             </div>
-            <figure style="width: 50%;">
+            <center>
+            <figure style="width: 100%;">
                     <a>
-                        <img width="100%" src="assets/clipforge_chair.png">
+                        <img width="35%" src="assets/clipforge_chair.png">
+                        <img width="60%" src="assets/clipforge_car.png">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
                          Text-driven shape generation of chairs with LION. Bottom row is the text input
                     </p>
             </figure>
-            <figure style="width: 50%;">
-                    <a>
-                        <img width="100%" src="assets/clipforge_car.png">
-                    </a>
-                    <p class="caption" style="margin-bottom: 24px;">
-                         Text-driven shape generation of cars with LION. Bottom row is the text input
-                    </p>
-            </figure>
+            </center>
         <h3> Per-sample Text-driven Texture Synthesis </h3> 
             <div class="flex-row">
                 <p> 
@@ -643,20 +703,34 @@ pre {
             </div>
 			<div class="row">
 			  		<div class="column">
-                        <img width="50%" src="assets/text2mesh/strawberries_airplane-rec_3.jpg"> 
+                        <img width="100%" src="assets/text2mesh/strawberries_airplane-rec_3.jpg"> 
                         <figcaption align = "center">An airplane made of strawberry</figcaption>
 			  		</div>
+
 			  		<div class="column">
-                        <img width="50%" src="assets/text2mesh/watermelons_airplane-rec_3.jpg"> 
-                        <figcaption align = "center">An airplane made of watermelon</figcaption>
+                        <img width="100%" src="assets/text2mesh/fabric_leather_airplane-rec_3.jpg"> 
+                        <figcaption align = "center">An airplane made of fabric leather </figcaption>
 			  		</div>
 			  		<div class="column">
-                        <img width="50%" src="assets/text2mesh/fabric_leather_airplane-rec_3.jpg"> 
-                        <figcaption align = "center">An airplane made of fabric leather</figcaption>
+                        <img width="100%" src="assets/text2mesh/wood_chair-rec_421_norm1.jpg"> 
+                        <figcaption align = "center">A chair made of wood</figcaption>
+			  		</div>
+			  		<div class="column">
+                        <img width="100%" src="assets/text2mesh/wrong_copied1-rec_293_norm0.jpg"> 
+                        <figcaption align = "center">A car made of rusty metal</figcaption>
 			  		</div>
 
+			  		<div class="column">
+                        <img width="100%" src="assets/text2mesh/brick_car-rec_67_norm1.jpg"> 
+                        <figcaption align = "center">A car made of brick</figcaption>
+			  		</div>
+
+
+			  		<div class="column">
+                        <img width="100%" src="assets/text2mesh/wrong_copied1-rec_12_norm1.jpg"> 
+                        <figcaption align = "center">A denim fabric animal</figcaption>
+			  		</div>
 			</div>
-
         <br>
 
 
