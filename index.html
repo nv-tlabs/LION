@@ -345,7 +345,7 @@ pre {
     <div class="paper-title">
     <h1> 
         <font color="#5364cc">LION</font>: 
-        <font color="#5364cc">L</font>atent Point Diffus<font color="#5364cc">ion</font> Models <br> for 3D Shape Generation</h1>
+        <font color="#5364cc">L</font>atent Po<font color="#5364cc">i</font>nt Diffusi<font color="#5364cc">on</font> Models <br> for 3D Shape Generation</h1>
     </div>
 
     <div id="authors">
@@ -409,7 +409,9 @@ pre {
         <hr>
         <h2>News</h2>
         <div class="row">
-            <div><span class="material-icons"> event </span> [Sept 2022] Build the project page <a href="https://github.com/nv-tlabs/LION">Page</a>!</div>
+        	<div><span class="material-icons"> event </span> [Oct 2022] <a href="https://nv-tlabs.github.io/LION">Project page</a> released!</div>
+        	<div><span class="material-icons"> event </span> [Oct 2022] Paper released on <a href="https://github.com/nv-tlabs/LION">arXiv</a>!</div>
+            <div><span class="material-icons"> event </span> [Aug 2022] LION got accepted to <b>Advances in Neural Information Processing Systems (NeurIPS)</b>!</div>
         </div>
     </section>
 
@@ -426,8 +428,8 @@ pre {
                 we train two hierarchical DDMs in these latent spaces. The hierarchical VAE approach boosts performance compared to DDMs that operate 
                 on point clouds directly, while the point-structured latents are still ideally suited for DDM-based modeling. Experimentally, LION 
                 achieves state-of-the-art generation performance on multiple ShapeNet benchmarks. Furthermore, our VAE framework allows us to easily 
-                use LION for different relevant tasks without re-training the latent DDMs: We show that LION excels at multimodal shape denoising and 
-                voxel-conditioned synthesis. We also demonstrate shape autoencoding and latent shape interpolation, and we augment LION with modern 
+                use LION for different relevant tasks: LION excels at multimodal shape denoising and voxel-conditioned synthesis, and it can be adapted
+                for text- and image-driven 3D generation.. We also demonstrate shape autoencoding and latent shape interpolation, and we augment LION with modern 
                 surface reconstruction techniques to generate smooth 3D meshes. We hope that LION provides a powerful tool for artists working with 
                 3D shapes due to its high-quality generation, flexibility, and surface reconstruction. 
             </p>
@@ -777,12 +779,10 @@ pre {
             <div class="paper-stuff">
                 <p><b>LION: Latent Point Diffusion Models for 3D Shape Generation</b></p>
                 <p>Xiaohui Zeng, Arash Vahdat, Francis Williams, Zan Gojcic, Or Litany, Sanja Fidler, Karsten Kreis</p>
-                <p><i>Advances in Neural Information Processing Systems (NeurIPS), 2022 <b></b></i></p>
-                <!-- 
-                <div><span class="material-icons"> description </span><a href="https://arxiv.org/abs/2112.07068"> arXiv version</a></div>
-                <div><span class="material-icons"> insert_comment </span><a href="assets/dockhorn2021score.bib"> BibTeX</a></div>
-                <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/nv-tlabs/CLD-SGM"> Code</a></div>
-                -->
+                <p><i>Advances in Neural Information Processing Systems (NeurIPS), 2022 <b></b></i></p> 
+                <div><span class="material-icons"> description </span><a href="https://github.com/nv-tlabs/LION"> arXiv version</a></div>
+                <div><span class="material-icons"> insert_comment </span><a href="assets/zeng2022lion.bib"> BibTeX</a></div>
+                <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/nv-tlabs/LION"> Code</a></div>
             </div>
             </div>
         </div>
@@ -791,10 +791,9 @@ pre {
     <section id="bibtex">
         <h2>Citation</h2>
         <hr>
-        <pre><code>@inproceedings{ 
-    zeng2022lion,
-    title={ LION: Latent Point Diffusion Models for 3D Shape Generation },
-    author={ Xiaohui Zeng and Arash Vahdat and Francis Williams and Zan Gojcic and Or Litany and Sanja Fidler and Karsten Kreis },
+        <pre><code>@inproceedings{zeng2022lion,
+    title={LION: Latent Point Diffusion Models for 3D Shape Generation},
+    author={Xiaohui Zeng and Arash Vahdat and Francis Williams and Zan Gojcic and Or Litany and Sanja Fidler and Karsten Kreis},
     booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
     year={2022}
 }</code></pre>
