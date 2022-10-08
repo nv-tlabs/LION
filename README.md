@@ -16,8 +16,5 @@
 <p align="center">Here, we will release code and checkpoints in the near future! Stay tuned!</p>
 <br><br>
 <p align="center">
-    <video class="centered" width="750" alt="Animation" controls autoplay loop muted playsinline class="video-background " >
-        <source src="assets/LION_video_v9.mp4#t=0.001" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <img width="750" alt="Animation" src="assets/animation.gif"/>
 </p>
