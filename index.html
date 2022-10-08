@@ -387,12 +387,12 @@ pre {
 
         <div style="clear: both">
             <div class="paper-btn-parent">
-            <a class="paper-btn" href="https://arxiv.org/abs/2112.07068">
+            <a class="paper-btn" href="https://nv-tlabs.github.io/LION">
                 <span class="material-icons"> description </span> 
                  Paper
             </a>
             <div class="paper-btn-coming-soon">
-                <a class="paper-btn" href="https://github.com/nv-tlabs/LION">
+                <a class="paper-btn" href="https://nv-tlabs.github.io/LION">
                     <span class="material-icons"> code </span>
                     Code
                 </a>
@@ -422,7 +422,7 @@ pre {
         <h2>News</h2>
         <div class="row">
         	<div><span class="material-icons"> event </span> [Oct 2022] <a href="https://nv-tlabs.github.io/LION">Project page</a> released!</div>
-        	<div><span class="material-icons"> event </span> [Oct 2022] Paper released on <a href="https://github.com/nv-tlabs/LION">arXiv</a>!</div>
+        	<div><span class="material-icons"> event </span> [Oct 2022] Paper released on <a href="https://nv-tlabs.github.io/LION">arXiv</a>!</div>
             <div><span class="material-icons"> event </span> [Aug 2022] LION got accepted to <b>Advances in Neural Information Processing Systems (NeurIPS)</b>!</div>
         </div>
     </section>
@@ -433,15 +433,15 @@ pre {
         <div class="flex-row">
             <p>
                 Denoising diffusion models (DDMs) have shown promising results in 3D point cloud synthesis. To advance 3D DDMs and make them useful 
-                for digital artists, we require (i) high generation quality, (ii) flexibility for manipulation and applications such as conditional 
-                synthesis and shape interpolation, and (iii) the ability to output smooth surfaces or meshes. To this end, we introduce the 
+                for digital artists, we require <i>(i)</i> high generation quality, <i>(ii)</i> flexibility for manipulation and applications such as conditional 
+                synthesis and shape interpolation, and <i>(iii)</i> the ability to output smooth surfaces or meshes. To this end, we introduce the 
                 hierarchical Latent Point Diffusion Model (LION) for 3D shape generation. LION is set up as a variational autoencoder (VAE) with 
                 a hierarchical latent space that combines a global shape latent representation with a point-structured latent space. For generation, 
                 we train two hierarchical DDMs in these latent spaces. The hierarchical VAE approach boosts performance compared to DDMs that operate 
                 on point clouds directly, while the point-structured latents are still ideally suited for DDM-based modeling. Experimentally, LION 
                 achieves state-of-the-art generation performance on multiple ShapeNet benchmarks. Furthermore, our VAE framework allows us to easily 
                 use LION for different relevant tasks: LION excels at multimodal shape denoising and voxel-conditioned synthesis, and it can be adapted
-                for text- and image-driven 3D generation.. We also demonstrate shape autoencoding and latent shape interpolation, and we augment LION with modern 
+                for text- and image-driven 3D generation. We also demonstrate shape autoencoding and latent shape interpolation, and we augment LION with modern 
                 surface reconstruction techniques to generate smooth 3D meshes. We hope that LION provides a powerful tool for artists working with 
                 3D shapes due to its high-quality generation, flexibility, and surface reconstruction. 
             </p>
@@ -452,10 +452,36 @@ pre {
         <h2>Method</h2>
         <div class="flex-row">
             <p> 
-            LION is set up as a hierarchical point cloud VAE with denoising diffusion models over the shape latent and latent point distributions. 
-            Point-Voxel CNNs (PVCNN) with adaptive Group Normalization (Ada. GN) are used as neural networks. 
-            The latent points can be interpreted as a smoothed version of the input point cloud. 
-            Shape As Points (SAP) is optionally used for mesh reconstruction. 
+				We introduce the Latent Point Diffusion Model (LION), a DDM for 3D shape generation.
+				LION focuses on learning a 3D generative model directly from geometry data without image-based training. 
+				Similar to previous 3D DDMs in this setting, LION operates on point clouds. However, it is constructed as a VAE with DDMs in latent
+				space. LION comprises a hierarchical latent space with a vector-valued global shape latent and another
+				point-structured latent space. The latent representations are predicted with point cloud processing
+				encoders, and two latent DDMs are trained in these latent spaces. Synthesis in LION proceeds by drawing 
+				novel latent samples from the hierarchical latent DDMs and decoding back to the original point
+				cloud space. Importantly, we also demonstrate how to augment LION with modern surface reconstruction methods to 
+				synthesize smooth shapes as desired by artists. LION has multiple advantages:
+			</p>
+			<p>
+				<b>Expressivity:</b> By mapping point clouds into regularized latent spaces, the DDMs in latent space are
+				effectively tasked with learning a smoothed distribution. This is easier than training on potentially
+				complex point clouds directly, thereby improving expressivity. However, point clouds are, in
+				principle, an ideal representation for DDMs. Because of that, we use latent points, this is, we keep a
+				point cloud structure for our main latent representation. Augmenting the model with an additional
+				global shape latent variable in a hierarchical manner further boosts expressivity.
+			</p>
+			<p>
+				<b>Varying Output Types:</b> Extending LION with Shape As Points (SAP) geometry reconstruction
+				allows us to also output smooth meshes. Fine-tuning SAP on data generated by LION’s autoencoder
+				reduces synthesis noise and enables us to generate high-quality geometry. LION combines (latent)
+				point cloud-based modeling, ideal for DDMs, with surface reconstruction, desired by artists.
+			</p>
+			<p>
+				<b>Flexibility:</b> Since LION is set up as a VAE, it can be easily adapted for different tasks without 
+				retraining the latent DDMs: We can efficiently fine-tune LION’s encoders on voxelized or noisy inputs,
+				which a user can provide for guidance. This enables multimodal voxel-guided synthesis and shape 
+				denoising. We also leverage LION’s latent spaces for shape interpolation and autoencoding. Optionally
+				training the DDMs conditioned on CLIP embeddings enables image- and text-driven 3D generation.
             </p>
         </div>
         <center>
@@ -463,8 +489,11 @@ pre {
                     <a>
                         <img width="80%" src="assets/pipeline.jpg"> 
                     </a>
-                    <p class="caption" style="margin-bottom: 24px;">
-                        Architecture of LION. 
+                    <p class="caption" style="margin-bottom: 24px;"><br>
+                       LION is set up as a hierarchical point cloud VAE with denoising diffusion models over the shape latent and latent point distributions. 
+                       Point-Voxel CNNs (PVCNN) with adaptive Group Normalization (Ada. GN) are used as neural networks. 
+                       The latent points can be interpreted as a smoothed version of the input point cloud. 
+                       Shape As Points (SAP) is optionally used for mesh reconstruction.
                     </p>
             </figure>
 
@@ -491,13 +520,16 @@ pre {
 
     <section id="novelties"/>
         <hr>
-        <h2>Technical Contributions</h2>
+        <h2>Main Contributions</h2>
         <div class="flex-row">
-            <p>We make the following technical contributions:
+            <p>
                 <ul style="list-style-type:disc;">
-                    <li>We explore the training of multiple denoising diffusion models (DDMs) in a latent space..</li>
-                    <li>We train latent DDMs in 3D generation.</li>
-                    <li>We outperform all baselines and demonstrate that LION scale to extremely diverse shape datasets, like modeling 13 or even 55 ShapeNet categories jointly without conditioning. </li> 
+                    <li>We introduce LION, a novel generate model for 3D shape synthesis. We explore the training of multiple hierarchical denoising diffusion models in latent space.</li>
+                    <!-- <li>We train latent DDMs in 3D generation.</li> -->
+                    <li>We extensively validate LION's high synthesis quality and reach state-of-the-art performance on widely used ShapeNet benchmarks.</li>
+                    <li>We demonstrate that LION scales to extremely diverse shape datasets. For instance, LION can model 13 or even 55 ShapeNet categories jointly without any class-conditioning. In the other extreme, we also verify that LION can be successfully trained on small datasets with less 100 shapes.</li> 
+                    <li>We propose to combine LION with Shape As Points-based surface reconstruction to directly extract practically useful meshes.</li>
+                    <li>We show our model's flexibility by demonstrating how LION can be adapted to various relevant tasks, such as multimodal shape denoising, voxel-guided synthesis, text- and image-driven shape generation, and more.</li>
                 </ul>
             </p>
         </div>
@@ -506,10 +538,10 @@ pre {
 
     <section id="results">
         <hr>
-        <h2>Generation (Single Category)</h2>  
-            <div class="flex-row">
+        <h2>Generation Results (Single Category Models)</h2>  
+<!--             <div class="flex-row">
                 <p>Samples from LION trained on single catgory.  </p>
-            </div>
+            </div> -->
 
             <center>
             <figure>
@@ -518,7 +550,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh of airplanes.             
+                    Generated point clouds and reconstructed meshes of airplanes.             
                 </p> <br>
             </figure>
             <figure>
@@ -527,7 +559,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh of chair.             
+                    Generated point clouds and reconstructed meshes of chairs.             
                 </p> <br>
             </figure>
             <figure>
@@ -536,7 +568,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh of car.             
+                    Generated point clouds and reconstructed meshes of cars.             
                 </p> <br>
             </figure>
 
@@ -546,7 +578,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption" style="margin-bottom: 24px;">
-                    Generated point clouds and reconstructed mesh of Animal.             
+                    Generated point clouds and reconstructed meshes of animals (model trained on only 553 shapes).             
                 </p> <br>
             </figure>
             </center>
@@ -557,7 +589,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh of bottle.             
+                    Generated point clouds and reconstructed meshes of bottles (model trained on only 340 shapes).             
                 </p> <br>
             </figure>
             </center>
@@ -569,17 +601,17 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh of mug.             
+                    Generated point clouds and reconstructed meshes of mugs (model trained on only 149 shapes).             
 
                 </p> <br>
             </figure>
             </center>
 
         <hr>
-        <h2>Generation (Multi-Classes)</h2>  
-            <!-- <div class="flex-row">
-                <p>samples from LION trained on multiple ShapeNet catgories, without conditioning.  </p>
-            </div> --> 
+        <h2>Generation Results (Multi-Class)</h2>  
+            <div class="flex-row">
+                <p>Below we show samples from LION models that were trained on shapes from multiple ShapeNet catgories, <l>without any class-conditioning</l>. We on purpose did not use conditioning to explore LION's scalability to diverse and multimodal datasets in the unconditional setting.</p>
+            </div> 
             <center>
             <figure>
                 <video class="centered" width="100%" controls autoplay muted playsinline class="video-background " >
@@ -587,7 +619,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh. LION model trained on 13 ShapeNet categories jointly without conditioning.              
+                    Generated point clouds and reconstructed meshes. The LION model is trained on 13 ShapeNet categories jointly without conditioning.              
                 </p>
                 <br>
             </figure>
@@ -600,7 +632,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Generated point clouds and reconstructed mesh. LION model trained on 55 ShapeNet categories jointly without conditioning.              
+                    Generated point clouds from a LION model that was trained on all 55 ShapeNet categories jointly without conditioning.              
                 </p>
                 <br>
             </figure>
@@ -610,10 +642,11 @@ pre {
 
     <section id="more_results">
         <hr> 
-        <h2>More Results</h2>  
-        <h3>Interpolation </h3> 
+        <h2>More Results and Applications</h2>
+        Our main goal was to introduce a high-performance 3D shape generative model. Here, we qualitatively demonstrate how LION can be used for a variety of interesting applications.
+        <h3>Shape Interpolation</h3> 
             <div class="flex-row">
-                <p>LION can interpolate two shapes by traversing the latent space. The generated shapes are clean and semantically plausible along the entire interpolation path.  </p>
+                <p>LION can interpolate shapes by traversing the latent space (interpolation is performed in the latent diffusion models' prior space, using the <i>Probability Flow ODE</i> for deterministic DDM-generation). The generated shapes are clean and semantically plausible along the entire interpolation path.</p>
             </div>
             <figure>
                 <video class="centered" width="100%" controls muted playsinline class="video-background " >
@@ -621,7 +654,7 @@ pre {
                     Your browser does not support the video tag.
                 </video>
                 <p class="caption">
-                    Left most shape: the source shape. Right most shape: the target shape. The shapes in middle are interpolated results between source and target shape.
+                    Leftmost shape: the source shape. Rightmost shape: the target shape. The shapes in the middle are interpolated between source and target shape.
                 </p> 
             </figure>
            <center>
@@ -636,10 +669,9 @@ pre {
             </figure>
            </center>
         <br>
-        <h3>Fast Sampling with DDIM </h3>  
+        <h3>Fast Sampling with DDIM</h3>  
             <div class="flex-row">
-                <p>The sampling time of LION can be reduced by applying DDIM sampler. 
-                DDIM sampler with 25 steps can already generate high-quality shapes, which takes less than 1 sec. </p>
+                <p>LION's sampling time can be reduced by using fast DDM sampler, such as the DDIM sampler. DDIM sampling with 25 steps can already generate high-quality shapes, which takes less than 1 sec. This enables real-time and interactive applications.</p>
             </div>
             <center>
             <figure style="width: 100%;">
@@ -647,17 +679,17 @@ pre {
                         <img width="100%" src="assets/ddim_sample.png">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                        DDIM samples from LION trained on different data. The top two rows show the number of steps and the wall-clock time used when drawing one sample. 
+                        DDIM samples from LION trained on different data. The top two rows show the number of steps and the wall-clock time required when drawing one sample. 
                         With DDIM sampling, we can reduce the sampling time from 27.09 sec (1000 steps) to less than 1 sec (25 steps) to generate an object. 
                     </p>
             </figure>
             </center>
 
         <br>
-        <h3> Multimodal Generation </h3>
+        <h3> Multimodal Generation</h3>
             <div class="flex-row">
                 <p>
-                    LION can synthesize different variations of a given shape, enabling multimodal generation in a controlled manner. This is achieved through a diffuse-denoise procedure. 
+                    LION can synthesize different variations of a given shape, enabling multimodal generation in a controlled manner. This is achieved through a diffuse-denoise procedure, where shapes a diffused for only a few steps in the latent DDMs and then denoised again. 
                 </p>
             </div>
             <!--
@@ -712,7 +744,7 @@ pre {
                         <img width="30%" src="assets/multi_modal/airplane/airplane_D200/sap_0000/recon_2.png">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                    Multimodal generation of airplane.
+                    Multimodal generation of airplanes.
                     </p>
             </figure>
             </center>
@@ -725,7 +757,7 @@ pre {
                         <img width="30%" src="assets/multi_modal/chair/chair_D160/sap_0000/recon_9.png"> 
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                    Multimodal generation of chair.
+                    Multimodal generation of chairs.
                     </p>
             </figure>
             </center>
@@ -738,15 +770,14 @@ pre {
                         <img width="30%" src="assets/multi_modal/car/recon_5.png">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                    Multimodal generation of car.
+                    Multimodal generation of cars.
                     </p>
             </figure>
             </center>
       
         <h3>Voxel-Conditioned Synthesis </h3>  
             <div class="flex-row">
-                <p>Given a coarse voxel grid, LION can generate different plausible detailed shapes. </p>
-                <p>In practice, an artist using a 3D generative model may have a rough idea of the desired shape. For instance, they may be able to quickly construct a coarse voxelized shape, to which the generative model then adds realistic details. </p>
+                <p>Given a coarse voxel grid, LION can generate different plausible detailed shapes. In practice, an artist using a 3D generative model may have a rough idea of the desired shape. For instance, they may be able to quickly construct a coarse voxelized shape, to which the generative model then adds realistic details. We achieve this by fine-tuning our encoder networks on voxelized shapes, and performing a few steps of diffuse-denoise in latent space to generate various plausible detailed shapes.</p>
             </div>
 
             <center>
@@ -769,12 +800,12 @@ pre {
         <h3> Single View Reconstruction </h3> 
             <div class="flex-row">
                 <p> 
-                    We extend LION to also allow for single view reconstruction (SVR) from RGB data. We render 2D
-                    images from the 3D ShapeNet shapes, extracted the images’ CLIP image embeddings, and
-                    trained LION’s latent diffusion models while conditioning on the shapes’ CLIP image embeddings.
+                    We qualitatively demonstrate how LION can be extended to also allow for single view reconstruction (SVR) from RGB data, using the approach from CLIP-Forge. 
+                    We render 2D images from the 3D ShapeNet shapes, extract the images’ CLIP image embeddings, and
+                    train LION’s latent diffusion models while conditioning on the shapes’ CLIP image embeddings.
                     At test time, we then take a single view 2D image, extract the CLIP image embedding, and generate
                     corresponding 3D shapes, thereby effectively performing SVR. We show SVR results from real
-                    RGB data 
+                    RGB data.
                 </p>
             </div>
             <center>
@@ -784,7 +815,7 @@ pre {
                         <img width="49%" src="assets/svr/img2shape_cari2s_mm_mitsuba_full.jpg">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                         Single view reconstruction from RGB images of chair. For each input image, LION can generate multi-modal outputs.
+                         Single view reconstruction from RGB images of chairs. For each input image, LION can generate multi-modal outputs.
                     </p>
             </figure>
             </center>
@@ -804,7 +835,7 @@ pre {
                         <img width="100%" src="assets/svr/img2shape_cari2s_mitsuba_full.jpg">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                         More single view reconstruction from RGB images of car. 
+                         More single view reconstructions from RGB images of cars. 
                     </p>
             </figure>
             </center>
@@ -822,14 +853,15 @@ pre {
                         <img width="60%" src="assets/clipforge_car.png">
                     </a>
                     <p class="caption" style="margin-bottom: 24px;">
-                         Text-driven shape generation of chairs with LION. Bottom row is the text input
+                         Text-driven shape generation of chairs with LION. Bottom row is the text inputs.
                     </p>
             </figure>
             </center>
-        <h3> Per-sample Text-driven Texture Synthesis </h3> 
+        <h3> Per-sample Text-driven Texture Synthesis</h3> 
             <div class="flex-row">
                 <p> 
-                    We apply Text2mesh on some generated meshes from LION to additionally synthesize textures in a text-driven manner, leveraging CLIP. The original mesh is generated by LION.
+           			We apply Text2mesh on some generated meshes from LION to additionally synthesize textures in a text-driven manner, leveraging CLIP. The original input meshes are generated by LION. 
+           			This is only possible because LION can output practically useful meshes with its SAP-based surface reconstruction component (even though the backbone generative modeling component is point cloud-based).
                 </p>
             </div>
 			<div class="row">
@@ -872,16 +904,16 @@ pre {
         <div class="flex-row">
             <div class="download-thumb">
             <div style="box-sizing: border-box; padding: 16px; margin: auto;">
-                <a href="https://nv-tlabs.github.io/CLD-SGM"><img class="screenshot" src="assets/cld_paper_preview.png"></a>
+                <a href="https://nv-tlabs.github.io/LION"><img class="screenshot" src="assets/cld_paper_preview.png"></a>
             </div>
         </div>
             <div class="paper-stuff">
                 <p><b>LION: Latent Point Diffusion Models for 3D Shape Generation</b></p>
                 <p>Xiaohui Zeng, Arash Vahdat, Francis Williams, Zan Gojcic, Or Litany, Sanja Fidler, Karsten Kreis</p>
                 <p><i>Advances in Neural Information Processing Systems (NeurIPS), 2022 <b></b></i></p> 
-                <div><span class="material-icons"> description </span><a href="https://github.com/nv-tlabs/LION"> arXiv version</a></div>
+                <div><span class="material-icons"> description </span><a href="https://nv-tlabs.github.io/LION"> arXiv version</a></div>
                 <div><span class="material-icons"> insert_comment </span><a href="assets/zeng2022lion.bib"> BibTeX</a></div>
-                <div><span class="material-icons"> integration_instructions </span><a href="https://github.com/nv-tlabs/LION"> Code</a></div>
+                <div><span class="material-icons"> integration_instructions </span><a href="https://nv-tlabs.github.io/LION"> Code</a></div>
             </div>
             </div>
         </div>
