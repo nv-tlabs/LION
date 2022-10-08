@@ -304,6 +304,12 @@ pre {
   width: 16.666%;
   padding: 5px;
 }
+.column3 {
+  text-align: center;
+  float: left;
+  width: 33.333%;
+  padding: 5px;
+}
 
 /* Clearfix (clear floats) */
 .row::after {
@@ -318,6 +324,12 @@ pre {
     width: 100%;
   }
 }
+@media screen and (max-width: 500px) {
+  .column3 {
+    width: 100%;
+  }
+}
+
 </style>
 
 <script type="text/javascript" src="../js/hidebib.js"></script>
@@ -642,7 +654,94 @@ pre {
             </center>
 
         <br>
+        <h3> Multimodal Generation </h3>
+            <div class="flex-row">
+                <p>
+                    LION can synthesize different variations of a given shape, enabling multi-modal generation in a controlled manner. This is achieved through a diffuse-denoise procedure. 
+                </p>
+            </div>
+            <!--
+			<div class="row">
+			  		<div class="column3">
+                        <figure style="width: 100%;">
+                                <a>
+                                    <img width="30%" src="assets/multi_modal/airplane/recon_313.jpg">
+                                    <img width="30%" src="assets/multi_modal/airplane/airplane_D200/sap_0000/recon_0.jpg">
+                                    <img width="30%" src="assets/multi_modal/airplane/airplane_D200/sap_0000/recon_2.jpg">
+                                </a>
+                                <figcaption align = "center">
+                                Multimodal generation of airplane.
+                                </figcaption>
+                        </figure>
+			  		</div>
 
+			  		<div class="column3">
+                        <figure style="width: 100%;">
+                                <a>
+                                    <img width="30%" src="assets/multi_modal/chair/recon_137.jpg">
+                                    <img width="30%" src="assets/multi_modal/chair/chair_D160/sap_0000/recon_4.png"> 
+                                    <img width="30%" src="assets/multi_modal/chair/chair_D160/sap_0000/recon_9.png"> 
+                                </a>
+                                <figcaption align = "center">
+                                Multimodal generation of chair.
+                                </figcaption>
+                        </figure>
+
+			  		</div>
+			  		<div class="column3">
+                        <figure style="width: 100%;">
+                                <a>
+                                    <img width="30%" src="assets/multi_modal/car/recon_46.jpg">
+                                    <img width="30%" src="assets/multi_modal/car/recon_0.png"> 
+                                    <img width="30%" src="assets/multi_modal/car/recon_5.png">
+                                </a>
+                                <figcaption align = "center">
+                                Multimodal generation of car.
+                                </figcaption>
+                        </figure>
+
+
+			  		</div>
+			</div>
+            -->
+            <center>
+            <figure style="width: 30%;">
+                    <a>
+                        <img width="30%" src="assets/multi_modal/airplane/recon_313.jpg">
+                        <img width="30%" src="assets/multi_modal/airplane/airplane_D200/sap_0000/recon_0.png">
+                        <img width="30%" src="assets/multi_modal/airplane/airplane_D200/sap_0000/recon_2.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                    Multimodal generation of airplane.
+                    </p>
+            </figure>
+            </center>
+
+            <center>
+            <figure style="width: 30%;">
+                    <a>
+                        <img width="30%" src="assets/multi_modal/chair/recon_137.jpg">
+                        <img width="30%" src="assets/multi_modal/chair/chair_D160/sap_0000/recon_4.png"> 
+                        <img width="30%" src="assets/multi_modal/chair/chair_D160/sap_0000/recon_9.png"> 
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                    Multimodal generation of chair.
+                    </p>
+            </figure>
+            </center>
+
+            <center>
+            <figure style="width: 30%;">
+                    <a>
+                        <img width="30%" src="assets/multi_modal/car/recon_46.jpg">
+                        <img width="30%" src="assets/multi_modal/car/recon_0.png"> 
+                        <img width="30%" src="assets/multi_modal/car/recon_5.png">
+                    </a>
+                    <p class="caption" style="margin-bottom: 24px;">
+                    Multimodal generation of car.
+                    </p>
+            </figure>
+            </center>
       
         <h3>Voxel-Conditioned Synthesis </h3>  
             <div class="flex-row">
@@ -736,31 +835,31 @@ pre {
 			<div class="row">
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/strawberries_airplane-rec_3.jpg"> 
-                        <figcaption align = "center">An airplane made of strawberry</figcaption>
+                        <figcaption align = "center">an airplane made of strawberry</figcaption>
 			  		</div>
 
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/fabric_leather_airplane-rec_3.jpg"> 
-                        <figcaption align = "center">An airplane made of fabric leather </figcaption>
+                        <figcaption align = "center">an airplane made of fabric leather </figcaption>
 			  		</div>
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/wood_chair-rec_421_norm1.jpg"> 
-                        <figcaption align = "center">A chair made of wood</figcaption>
+                        <figcaption align = "center">a chair made of wood</figcaption>
 			  		</div>
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/wrong_copied1-rec_293_norm0.jpg"> 
-                        <figcaption align = "center">A car made of rusty metal</figcaption>
+                        <figcaption align = "center">a car made of rusty metal</figcaption>
 			  		</div>
 
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/brick_car-rec_67_norm1.jpg"> 
-                        <figcaption align = "center">A car made of brick</figcaption>
+                        <figcaption align = "center">a car made of brick</figcaption>
 			  		</div>
 
 
 			  		<div class="column">
                         <img width="100%" src="assets/text2mesh/wrong_copied1-rec_12_norm1.jpg"> 
-                        <figcaption align = "center">A denim fabric animal</figcaption>
+                        <figcaption align = "center">a denim fabric animal</figcaption>
 			  		</div>
 			</div>
         <br>
