@@ -313,6 +313,10 @@ pre {
 .border-right {
     border-right: 1px solid black;
 }
+.border-bottom{
+    border-bottom: 1px solid black;
+}
+
     <style>
         .vertical {
             border-left: 6px solid black;
@@ -655,16 +659,29 @@ pre {
                 </p>
             </div> 
             <div class="row">
-                    <div class="column3 border-right">
+                    <div class="column3 border-right  border-bottom">
                         <img width="100%" src="assets/more_interpo/all_freeze/sap_0163_lamp_full.jpg"> 
                     </div>
 
-                    <div class="column3 border-right">
-                          <img width="100%" src="assets/more_interpo/all_freeze/sap_0000_watercraft_full.jpg">
+                    <div class="column3 border-right border-bottom ">
+                          <img width="100%" src="assets/more_interpo/all_freeze/sap_0093_display_full.jpg">
                     </div>
-                    <div class="column3">
+                    <div class="column3 border-bottom ">
                             <img width="100%" src="assets/more_interpo/all_freeze/sap_0192_table_full.jpg">
+                    </div> 
+            </div>
+            <div class="row">
+                    <div class="column3 border-right  ">
+                        <img width="100%" src="assets/more_interpo/all_freeze/sap_0198_chair_full.jpg"> 
                     </div>
+
+                    <div class="column3 border-right ">
+                          <img width="100%" src="assets/more_interpo/all_freeze/sap_0110_sofa_full.jpg">
+                    </div>
+                    <div class="column3  ">
+                            <img width="100%" src="assets/more_interpo/all_freeze/sap_0002_car_full.jpg">
+                    </div> 
+
                     <center> 
                         <p class="caption" style="margin-bottom: 24px;"> For each group of shapes, we freeze the shape latent variables, and sample different latent points to generate the other shapes.  Model trained on 13 ShapeNet categories. </p>
                     </center> 
