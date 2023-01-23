@@ -15,6 +15,7 @@
 <p align="center">
     <img width="750" alt="Animation" src="assets/animation.gif"/>
 </p>
+
 ## Install 
 * Dependencies: 
     * CUDA 11.6 
