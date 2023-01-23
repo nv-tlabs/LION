@@ -1,0 +1,14 @@
+__pycache__/
+*__pycache__
+.idea/
+*.pyc
+*.m
+.ipynb_checkpoints
+*swp
+*swo
+*__pycache__*
+models/pvcnn/functional/build/
+*.sh
+lion_ckpt
+data/
+datasets/test_data
