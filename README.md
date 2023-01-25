@@ -48,11 +48,12 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 * Put the downloaded data as `./data/ShapeNetCore.v2.PC15k` *or* edit the `pointflow` entry in `./datasets/data_path.py` for the ShapeNet dataset path. 
 
 ### train VAE 
-* run `bash ./script/train_vae.sh $NGPU` (the released checkpoint is trained with `NGPU=4`) 
+* run `bash ./script/train_vae.sh $NGPU` (the released checkpoint is trained with `NGPU=4` on A100) 
+* if want to use comet to log the experiment, add `.comet_api` file under the current folder, write the api key as `{"api_key": "${COMET_API_KEY}"}` in the `.comet_api` file
 
 ### train diffusion prior 
 * require the vae checkpoint
-* run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node)
+* run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node on V100)
 
 ### evaluate a trained prior 
 * download the test data from [here](https://drive.google.com/file/d/1uEp0o6UpRqfYwvRXQGZ5ZgT1IYBQvUSV/view?usp=share_link), unzip and put it as `./datasets/test_data/`

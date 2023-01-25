@@ -1,8 +1,17 @@
+if [ -z "$1" ]
+    then
+    echo "Require NGPU input; "
+    exit
+fi
 DATA=" ddpm.input_dim 3 data.cates car "
 NGPU=$1 # 
 num_node=1
-mem=40 
 BS=32 
+total_bs=$(( $NGPU * $BS ))
+if (( $total_bs > 128 )); then 
+    echo "[WARNING] total batch_size larger than 128 may lead to unstable training, please reduce the size"
+    exit
+fi
 
 ENT="python train_dist.py --num_process_per_node $NGPU "
 kl=0.5  

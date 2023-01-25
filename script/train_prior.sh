@@ -1,3 +1,8 @@
+if [ -z "$1" ]
+    then
+    echo "Require NGPU input; "
+    exit
+fi
 loss="mse_sum"
 NGPU=$1 ## 1 #8
 num_node=2
