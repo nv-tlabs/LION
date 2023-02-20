@@ -16,6 +16,9 @@
     <img width="750" alt="Animation" src="assets/animation.gif"/>
 </p>
 
+## Update
+* When opening an issue, please add @ZENGXH so that I can reponse faster! 
+
 ## Install 
 * Dependencies: 
     * CUDA 11.6 
