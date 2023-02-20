@@ -34,6 +34,11 @@
     ```
     Tested with conda version 22.9.0
 
+* Using Docker
+    * build the docker with `bash ./docker/build_docker.sh`
+    * launch the docker with `bash ./docker/run.sh`
+
+
 ## Demo
 run `python demo.py`, will load the released text2shape model on hugging face and generate a chair point cloud. (Note: the checkpoint is not released yet, the files loaded in the `demo.py` file is not available at this point)
 
