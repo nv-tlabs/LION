@@ -1,0 +1,271 @@
+bash_name: ../exp/tmp/2022_0407_1347_21.sh
+clipforge:
+  clip_model: ViT-B/32
+  enable: 0
+  feat_dim: 512
+cmt: l2e-4GlobalP2048D03
+comet_key: ''
+data:
+  batch_size: 20
+  batch_size_test: 10
+  cates: car
+  clip_forge_enable: 0
+  clip_model: ViT-B/32
+  cond_on_cat: 0
+  cond_on_voxel: 0
+  data_dir: data/ShapeNetCore.v2.PC15k
+  dataset_scale: 1
+  dataset_type: shapenet15k
+  eval_test_split: 0
+  input_dim: -1
+  is_encode_whole_dataset_trainer: 0
+  nclass: 55
+  noise_std: 0.1
+  noise_std_min: -1.0
+  noise_type: normal
+  normalize_global: true
+  normalize_per_shape: false
+  normalize_range: false
+  normalize_shape_box: false
+  normalize_std_per_axis: false
+  num_workers: 4
+  random_subsample: 1
+  recenter_per_shape: false
+  sample_with_replacement: 1
+  te_max_sample_points: 2048
+  tr_max_sample_points: 2048
+  train_drop_last: 1
+  type: datasets.pointflow_datasets
+  voxel_size: 0.1
+ddpm:
+  add_point_feat: true
+  attn:
+  - 0
+  - 1
+  - 0
+  - 0
+  beta_1: 0.0001
+  beta_T: 0.02
+  clip_denoised: 0
+  ddim_step: 200
+  dropout: 0.1
+  ema: 1
+  input_dim: 3
+  loss_type: l1_sum
+  loss_type_0: ''
+  loss_weight_cdnorm: 1.0
+  loss_weight_emd: 1.0
+  model_mean_type: eps
+  model_var_type: fixedlarge
+  ncenter:
+  - 1024
+  - 256
+  - 64
+  - 16
+  num_layers_classifier: 3
+  num_steps: 1000
+  p2_gamma: 1.0
+  p2_k: 1.0
+  sched_mode: linear
+  time_dim: 64
+  use_bn: false
+  use_global_attn: 0
+  use_gn: true
+  use_new_timeemb: 0
+  use_p2_weight: 0
+  with_se: 0
+dpm:
+  train_encoder_only: 0
+dpm_ckpt: ''
+eval:
+  load_other_vae_ckpt: 0
+  need_denoise: 0
+eval_ddim_step: 0
+eval_trainnll: 0
+exp_name: 0407/car/fbb941h_train_l2e-4GlobalP2048D03_vae_adainB20l1E3W8
+has_shapelatent: 1
+hash: fbb941h
+latent_pts:
+  ada_mlp_init_scale: 0.1
+  decoder_layer_out_dim: 32
+  encoder_layer_out_dim: 32
+  hid: 64
+  latent_dim_ext:
+  - 64
+  mask_out_extra_latent: 0
+  normalization: bn
+  pts_sigma_offset: 0.0
+  pvd_mse_loss: 1
+  skip_weight: 0.01
+  style_dim: 128
+  style_encoder: models.shapelatent_modules.PointNetPlusEncoder
+  style_mlp: ''
+  style_prior: models.score_sde.resnet.PriorSEDrop
+  use_linear_for_adagn: 0
+  weight_kl_feat: 1.0
+  weight_kl_glb: 1.0
+  weight_kl_pt: 1.0
+log_dir: ../exp/0407/car/fbb941h_train_l2e-4GlobalP2048D03_vae_adainB20l1E3W8
+log_name: ../exp/0407/car/fbb941h_train_l2e-4GlobalP2048D03_vae_adainB20l1E3W8
+model_config: default
+ngpu: 8
+num_ref: 0
+num_val_samples: 24
+save_dir: ../exp/0407/car/fbb941h_train_l2e-4GlobalP2048D03_vae_adainB20l1E3W8
+sde:
+  attn_mhead: 0
+  attn_mhead_local: -1
+  autocast_train: false
+  beta_end: 20.0
+  beta_start: 0.1
+  bound_mlogit: 0
+  bound_mlogit_value: -5.42
+  condition_add: 1
+  condition_cat: 0
+  cont_kl_anneal: true
+  dae_checkpoint: ''
+  dataset: shape
+  ddim_kappa: 1.0
+  ddim_skip_type: uniform
+  denoising_stddevs: beta
+  diffusion_steps: 1000
+  drop_inactive_var: 0
+  dropout: 0.3
+  ema_decay: 0.9999
+  embedding_dim: 128
+  embedding_scale: 1.0
+  embedding_type: positional
+  epochs: 800
+  fir: false
+  global_prior_ckpt: ''
+  grad_clip_max_norm: 0.0
+  hier_prior: 0
+  hypara_mixing_logit: 0
+  init_t: 1.0
+  is_continues: 0
+  iw_sample_p: ll_iw
+  iw_sample_q: reweight_p_samples
+  iw_subvp_like_vp_sde: false
+  jac_reg_coeff: 0
+  jac_reg_freq: 1
+  kin_reg_coeff: 0
+  kl_anneal_portion_vada: 0.5
+  kl_balance_vada: false
+  kl_const_coeff_vada: 1.0e-07
+  kl_const_portion_vada: 0.0
+  kl_max_coeff_vada: 0.5
+  learn_mixing_logit: 1
+  learning_rate_dae: 0.0002
+  learning_rate_dae_local: 0.0003
+  learning_rate_min_dae: 0.0002
+  learning_rate_min_dae_local: 0.0003
+  learning_rate_min_vae: 1.0e-05
+  learning_rate_mlogit: -1.0
+  learning_rate_vae: 0.0001
+  local_prior: same_as_global
+  mixed_prediction: false
+  mixing_logit_init: -6
+  nhead: 4
+  num_cell_per_scale_dae: 8
+  num_cell_per_scale_dae_local: 0
+  num_channels_dae: 2048
+  num_latent_scales: 1
+  num_preprocess_blocks: 2
+  num_scales_dae: 2
+  ode_eps: 1.0e-05
+  ode_sample: 0
+  pool_feat_cat: 0
+  pos_embed: none
+  prior_model: models.latent_points_ada_localprior.PVCNN2Prior
+  progressive: none
+  progressive_combine: sum
+  progressive_input: none
+  regularize_mlogit: 0
+  regularize_mlogit_margin: 0.0
+  sde_type: vpsde
+  share_mlogit: 0
+  sigma2_0: 0.0
+  sigma2_max: 0.99
+  sigma2_min: 0.0001
+  time_emb_scales: 1.0
+  time_eps: 0.01
+  train_dae: 1
+  train_ode_solver_tol: 1.0e-05
+  train_vae: false
+  update_q_ema: false
+  use_adam: true
+  use_adamax: false
+  vae_checkpoint: ../exp/0326/car/f91abeh_hvae_kl0.5N32H1Anneall1_sumWlrInitScale_vae_adainB32l1E3W4/checkpoints/epoch_7999_iters_151999.pt
+  warmup_epochs: 20
+  weight_decay: 0.0003
+  weight_decay_norm_dae: 0.0
+  weight_decay_norm_vae: 0.0
+set_detect_anomaly: 0
+shapelatent:
+  decoder_num_points: 2048
+  decoder_type: models.latent_points_ada.LatentPointDecPVC
+  encoder_type: models.latent_points_ada.PointTransPVC
+  eps_z_global_only: 1
+  freeze_vae: 0
+  kl_weight: 0.5
+  latent_dim: 1
+  local_emb_agg: mean
+  log_sigma_offset: 6.0
+  loss0_weight: 1.0
+  model: models.vae_adain
+  prior_type: normal
+  residual: 1
+snapshot_min: 30
+test_size: 660
+trainer:
+  anneal_kl: 1
+  apply_loss_weight_1_kl: 0
+  epochs: 18000
+  kl_balance: 0
+  kl_free:
+  - 0
+  - 0
+  kl_ratio:
+  - 1.0
+  - 1.0
+  kl_ratio_apply: 0
+  loss1_weight_anneal_v: quad
+  opt:
+    beta1: 0.9
+    beta2: 0.99
+    ema_decay: 0.9999
+    grad_clip: -1.0
+    lr: 0.001
+    lr_min: 0.0001
+    momentum: 0.9
+    scheduler: ''
+    start_ratio: 0.6
+    step_decay: 0.998
+    type: adam
+    vae_lr_warmup_epochs: 0
+    weight_decay: 0.0
+  rec_balance: 0
+  seed: 1
+  sn_reg_vae: 0
+  sn_reg_vae_weight: 0.0
+  type: trainers.train_2prior
+  use_grad_scalar: 0
+  use_kl_free: 0
+  warmup_epochs: 0
+use_checkpoint: 0
+vis_latent_point: 1
+viz:
+  log_freq: -1
+  save_freq: 1000
+  val_freq: -10000
+  vis_sample_ddim_step: 0
+  viz_freq: -200
+  viz_order:
+  - 2
+  - 0
+  - 1
+voxel2pts:
+  diffusion_steps:
+  - 0
+  init_weight: ''
+weight_recont: 1.0
