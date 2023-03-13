@@ -17,6 +17,7 @@
 </p>
 
 ## Update
+* add pointclouds rendering code used for paper figure, see `utils/render_mitsuba_pc.py`
 * When opening an issue, please add @ZENGXH so that I can reponse faster! 
 
 ## Install 
