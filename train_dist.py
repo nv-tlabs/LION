@@ -76,7 +76,9 @@ def main(args, config):
         else:
             raise NotImplementedError
     elif args.pretrained is not None:
-        trainer.load_vae(args.pretrained)
+        logger.info('Resuming training from {}; if you dont want resume training, edit the cmt to change the exp name',
+                args.pretrained)
+        trainer.resume(args.pretrained)
 
     if not args.eval_generation:
         trainer.train_epochs()

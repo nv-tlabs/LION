@@ -32,7 +32,7 @@ $ENT \
     sde.prior_model 'models.latent_points_ada_localprior.PVCNN2Prior' \
     sde.train_vae $train_vae \
     sde.embedding_scale 1.0 \
-    viz.save_freq 1000 \
+    viz.save_freq 1 \
     viz.viz_freq -200 viz.log_freq -1 viz.val_freq -10000 \
     data.batch_size $BS \
     trainer.type 'trainers.train_2prior' \
