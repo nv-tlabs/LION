@@ -721,7 +721,7 @@ class BaseTrainer(ABC):
     def eval_nll(self, step, ntest=None, save_file=False):
         loss_dict = {}
         cfg = self.cfg
-        self.swap_vae_param_if_need()
+        self.swap_vae_param_if_need() # if using EMA, load the ema weight
         args = self.args
         device = torch.device('cuda:%d' % args.local_rank)
         tag = exp_helper.get_evalname(self.cfg)
@@ -752,6 +752,8 @@ class BaseTrainer(ABC):
 
             output = self.model.get_loss(
                 val_x, it=step, is_eval_nll=1, noisy_input=inputs, **model_kwargs)
+
+            # book-keeping
             for k, v in output.items():
                 if 'print/' in k:
                     k = k.split('print/')[-1]
@@ -761,7 +763,7 @@ class BaseTrainer(ABC):
                     loss_dict[k].update(v)
 
             gen_x = output['final_pred']
-            if gen_x.shape[1] > val_x.shape[1]:
+            if gen_x.shape[1] > val_x.shape[1]:  # downsample points if needed
                 tr_idxs = np.random.permutation(np.arange(gen_x.shape[1]))[
                     :val_x.shape[1]]
                 gen_x = gen_x[:, tr_idxs]
@@ -813,7 +815,7 @@ class BaseTrainer(ABC):
                 self.writer.add_scalar('eval/%s' % (n), v, step)
             if 'CD' in n:
                 score = v
-        self.swap_vae_param_if_need()
+        self.swap_vae_param_if_need()  # if using EMA, swap back to none-ema weight here
         return score
 
     def prepare_clip_model_data(self):

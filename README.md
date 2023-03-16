@@ -64,6 +64,18 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 * require the vae checkpoint
 * run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node on V100)
 
+### (Optional) monitor exp 
+* (tested) use comet-ml: need to add a file `.comet_api` under this `LION` folder, example of the `.comet_api` file: 
+```
+{"api_key": "...", "project_name": "lion", "workspace": "..."}
+```
+* (not tested) use wandb: need to add a `.wandb_api` file, and set the env variable `export USE_WB=1` before training 
+```
+{"project": "...", "entity": "..."}
+```
+* (not tested) use tensorboard, set the env variable `export USE_TFB=1` before training
+* see the `utils/utils.py` files for the details of the experiment logger; I usually use comet-ml for my experiments
+
 ### evaluate a trained prior 
 * download the test data (Table 1) from [here](https://drive.google.com/file/d/1uEp0o6UpRqfYwvRXQGZ5ZgT1IYBQvUSV/view?usp=share_link), unzip and put it as `./datasets/test_data/`
 * download the released checkpoint from above
