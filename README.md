@@ -65,16 +65,25 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 * run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node on V100)
 
 ### evaluate a trained prior 
-* download the test data from [here](https://drive.google.com/file/d/1uEp0o6UpRqfYwvRXQGZ5ZgT1IYBQvUSV/view?usp=share_link), unzip and put it as `./datasets/test_data/`
+* download the test data (Table 1) from [here](https://drive.google.com/file/d/1uEp0o6UpRqfYwvRXQGZ5ZgT1IYBQvUSV/view?usp=share_link), unzip and put it as `./datasets/test_data/`
 * download the released checkpoint from above
 ```
 checkpoint="./lion_ckpt/unconditional/airplane/checkpoints/model.pt" 
 bash ./script/eval.sh $checkpoint  # will take 1-2 hour 
 ```
+#### other test data
+* ShapeNet-Vol test data:
+  * please check [here](https://github.com/nv-tlabs/LION/issues/20#issuecomment-1436315100) before using this data
+  * [all category](https://drive.google.com/file/d/1QXrCbYKjTIAnH1OhZMathwdtQEXG5TjO/view?usp=sharing): 1000 shapes are sampled from the full validation set 
+  * [chair, airplane, car](https://drive.google.com/file/d/11ZU_Bq5JwN3ggI7Ffj4NAjIxxhc2pNZ8/view?usp=share_link)
+* table 21 and table 20, point-flow test data 
+  * check [here](https://github.com/nv-tlabs/LION/issues/26#issuecomment-1466915318) before using this data
+  * [mug](https://drive.google.com/file/d/1lvJh2V94Nd7nZPcRqsCwW5oygsHOD3EE/view?usp=share_link) and [bottle](https://drive.google.com/file/d/1MRl4EgW6-4hOrdRq_e2iGh348a0aCH5f/view?usp=share_link) 
+  * 55 catergory [data](https://drive.google.com/file/d/1Rbj1_33sN_S2YUbcJu6h922tKuJyQ2Dm/view?usp=share_link)
 
 ## Evaluate the samples with the 1-NNA metrics 
 * download the test data from [here](https://drive.google.com/file/d/1uEp0o6UpRqfYwvRXQGZ5ZgT1IYBQvUSV/view?usp=share_link), unzip and put it as `./datasets/test_data/`
-* run `python ./script/compute_score.py`
+* run `python ./script/compute_score.py` (Note: for ShapeNet-Vol data and table 21, 20, need to set `norm_box=True`)
 
 ## Citation
 ```
