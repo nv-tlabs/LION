@@ -48,6 +48,7 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 
 ## Released checkpoint and samples 
 * will be release soon
+* after download, run the checksum with `python ./script/check_sum.py ./lion_ckpt.zip`
 * put the downloaded file under `./lion_ckpt/`
 
 ## Training 
