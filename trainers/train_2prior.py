@@ -254,6 +254,8 @@ class Trainer(PriorTrainer):
                 tr_img).view(B, nimg, -1).mean(1).float()
         else:
             clip_feat = None
+        if self.cfg.clipforge.enable:
+            assert(clip_feat is not None)
 
         # optimize vae params
         vae_optimizer.zero_grad()

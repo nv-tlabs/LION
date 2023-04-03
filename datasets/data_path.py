@@ -14,6 +14,9 @@ def get_path(dataname=None):
         './data/ShapeNetCore.v2.PC15k/'
 
     ]
+    dataset_path['clip_forge_image'] = [
+            './data/shapenet_render/'
+            ]
 
     if dataname is None:
         return dataset_path
