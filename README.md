@@ -66,7 +66,8 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 * run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node on V100)
 
 ### train diffusion prior with clip feat 
-* this scripts train model for single-view-reconstruction or text2shape task
+* this script trains model for single-view-reconstruction or text2shape task
+    * the idea is that we take the encoder and decoder trained on the data as usual (without conditioning input), and when training the diffusion prior, we feed the clip image embedding as conditioning input: the shape-latent prior model will take the clip embedding through AdaGN layer.
 * require the vae checkpoint trained above
 * require the rendered ShapeNet data, you can render yourself or download it from [here](https://github.com/autonomousvision/occupancy_networks#preprocessed-data)
     * put the rendered data as `./data/shapenet_render/` or edit the `clip_forge_image` entry in `./datasets/data_path.py`
