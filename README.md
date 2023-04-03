@@ -65,6 +65,14 @@ run `python demo.py`, will load the released text2shape model on hugging face an
 * require the vae checkpoint
 * run `bash ./script/train_prior.sh $NGPU` (the released checkpoint is trained with `NGPU=8` with 2 node on V100)
 
+### train diffusion prior with clip feat 
+* this scripts train model for single-view-reconstruction or text2shape task
+* require the vae checkpoint trained above
+* require the rendered ShapeNet data, you can render yourself or download it from [here](https://github.com/autonomousvision/occupancy_networks#preprocessed-data)
+    * put the rendered data as `./data/shapenet_render/` or edit the `clip_forge_image` entry in `./datasets/data_path.py`
+    * the img data will be read under `./datasets/pointflow_datasets.py` with the `render_img_path`, you may need to cutomize this variable depending of the folder structure 
+* run `bash ./script/train_prior_clip.sh $NGPU` 
+
 ### (Optional) monitor exp 
 * (tested) use comet-ml: need to add a file `.comet_api` under this `LION` folder, example of the `.comet_api` file: 
 ```
