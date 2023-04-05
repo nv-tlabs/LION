@@ -1130,24 +1130,26 @@ def init_processes(rank, size, fn, args, config):
     """ Initialize the distributed environment. """
     os.environ['MASTER_ADDR'] = args.master_address
     os.environ['MASTER_PORT'] = '6020'
-    if args.num_proc_node == 1:
-        import socket
-        import errno
-        a_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        for p in range(6010, 6030):
-            location = (args.master_address, p)  # "127.0.0.1", p)
-            try:
-                a_socket.bind((args.master_address, p))
-                logger.debug('set port as {}', p)
-                os.environ['MASTER_PORT'] = '%d' % p
-                a_socket.close()
-                break
-            except socket.error as e:
-                a = 0
-                # if e.errno == errno.EADDRINUSE:
-                #    # logger.debug("Port {} is already in use", p)
-                # else:
-                #    logger.debug(e)
+    logger.info('set MASTER_PORT: {}, MASTER_PORT: {}', os.environ['MASTER_ADDR'], os.environ['MASTER_PORT'])
+    
+    # if args.num_proc_node == 1:  # try to solve the port occupied issue
+    #     import socket
+    #     import errno
+    #     a_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #     for p in range(6010, 6030):
+    #         location = (args.master_address, p)  # "127.0.0.1", p)
+    #         try:
+    #             a_socket.bind((args.master_address, p))
+    #             logger.debug('set port as {}', p)
+    #             os.environ['MASTER_PORT'] = '%d' % p
+    #             a_socket.close()
+    #             break
+    #         except socket.error as e:
+    #             a = 0
+    #             # if e.errno == errno.EADDRINUSE:
+    #             #    # logger.debug("Port {} is already in use", p)
+    #             # else:
+    #             #    logger.debug(e)
 
     logger.info('init_process: rank={}, world_size={}', rank, size)
     torch.cuda.set_device(args.local_rank)
