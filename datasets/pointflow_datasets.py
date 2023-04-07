@@ -174,7 +174,7 @@ class ShapeNet15kPointClouds(Dataset):
                     # obj_fname = os.path.join(sub_path, x)
                     if self.clip_forge_enable:
                         synset_id = subd
-                        render_img_path = os.path.join(img_path, synset_id, mid.split('/')[-1], 'img_choy2016' 
+                        render_img_path = os.path.join(img_path, synset_id, mid.split('/')[-1], 'img_choy2016')
                         
                         #render_img_path = os.path.join(img_path, synset_id, mid.split('/')[-1])
                         #if not (os.path.exists(render_img_path)): continue
