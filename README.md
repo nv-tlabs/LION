@@ -47,7 +47,7 @@
 run `python demo.py`, will load the released text2shape model on hugging face and generate a chair point cloud. (Note: the checkpoint is not released yet, the files loaded in the `demo.py` file is not available at this point)
 
 ## Released checkpoint and samples 
-* will be release soon
+* checkpoint can be downloaded from [here](https://huggingface.co/xiaohui2022/lion_ckpt)
 * after download, run the checksum with `python ./script/check_sum.py ./lion_ckpt.zip`
 * put the downloaded file under `./lion_ckpt/`
 
