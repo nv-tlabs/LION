@@ -422,9 +422,9 @@ class Trainer(PriorTrainer):
         DAE = nn.ModuleList(
             [
                 import_model(self.cfg.latent_pts.style_prior)(args,
-                                                              self.cfg.latent_pts.style_dim, self.cfg),  # style prior
+                                                              self.cfg.latent_pts.style_dim, self.cfg),  # global latent prior
                 import_model(self.cfg.sde.prior_model)(args,
-                                                       num_input_channels, self.cfg),  # global prior, conditional model
+                                                       num_input_channels, self.cfg),  # latent point prior, conditional model
             ])
 
         self.dae = DAE.to(device)
